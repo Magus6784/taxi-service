@@ -1,32 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
-    Username: {{ driver.username }}
-  </h1>
-      <a href="{% url 'taxi:driver-update' pk=driver.id %}">
-          Update Licence |
-      </a>
-      <a href="{% url 'taxi:driver-delete' pk=driver.id%}">
-          Delete User
-      </a>
+    <div class="col-sm-6">
 
-  <p><strong>First name:</strong> {{ driver.first_name }}</p>
-  <p><strong>Last name:</strong> {{ driver.last_name }}</p>
-  <p><strong>License number:</strong> {{ driver.license_number }}</p>
-  <p><strong>Is staff:</strong> {{ driver.is_staff }}</p>
+        <h1>Driver: {{ driver.username }}
+            <a class="btn btn-info float-right" href="{% url 'taxi:driver-update' pk=driver.id %}">
+                Update Licence
+            </a>
+            <a class="btn btn-danger float-right" href="{% url 'taxi:driver-delete' pk=driver.id %}">
+                Delete Driver
+            </a>
+        </h1>
 
-  <div class="ml-3">
-    <h4>Cars</h4>
+        <p><strong>First name:</strong> {{ driver.first_name }}</p>
+        <p><strong>Last name:</strong> {{ driver.last_name }}</p>
+        <p><strong>License number:</strong> {{ driver.license_number }}</p>
+        <p><strong>Is staff:</strong> {{ driver.is_staff }}</p>
+        <h3>Cars: </h3>
+        {% include "includes/cars.html" with cars=driver.cars.all %}
 
-    {% for car in driver.cars.all %}
-        <hr>
-        <p><strong>Model:</strong> {{ car.model }}</p>
-        <p><strong>Manufacturer:</strong> {{ car.manufacturer.name }}</p>
-        <p class="text-muted"><strong>Id:</strong> {{car.id}}</p>
+    </div>
 
-    {% empty %}
-      <p>No cars!</p>
-    {% endfor %}
-  </div>
+{#      <div class="ml-3">#}
+{#        <h4>Cars</h4>#}
+{#    #}
+{#        {% for car in driver.cars.all %}#}
+{#            <hr>#}
+{#            <p><strong>Model:</strong> {{ car.model }}</p>#}
+{#            <p><strong>Manufacturer:</strong> {{ car.manufacturer.name }}</p>#}
+{#            <p class="text-muted"><strong>Id:</strong> {{car.id}}</p>#}
+{#    #}
+{#        {% empty %}#}
+{#          <p>No cars!</p>#}
+{#        {% endfor %}#}
+{#      </div>#}
 {% endblock %}
