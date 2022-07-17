@@ -7,10 +7,12 @@
         Are you sure you want to delete manufacturer: {{ manufacturer.name }}
     </p>
     <p><i>All Cars with this manufacturer will be also deleted!</i></p>
-    <form action="" method="POST">
-        {% csrf_token %}
-
-        <input type="submit" value="Yes, delete">
+    <form action="" method="POST" style="display: inline">
+      {% csrf_token %}
+      <input type="submit" value="Yes, delete" class="btn btn-danger">
     </form>
+    <a class="btn btn-success" href="{% url 'taxi:manufacturer-list' %}">
+        No, go back
+    </a>
 
 {% endblock %}
