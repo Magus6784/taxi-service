@@ -28,3 +28,8 @@ python manage.py runserver  # start Django project
 * Authentication functionality for Driver/User
 * Managing cars, drivers, manufacturers directly from website
 * Admin panel for advanced managing
+
+## Demo
+
+![img.png](home_page.png)
+![img_1.png](driver_list.png)
