@@ -17,8 +17,9 @@ Python 3 must be already installed
 git clone https://github.com/Magus6784/taxi-service
 cd taxi-service
 python -m venv venv
-venv/scripts/activate
+venv\scripts\activate
 pip install -r requirements.txt
+python manage.py migrate
 python manage.py runserver  # start Django project
 ```
 
